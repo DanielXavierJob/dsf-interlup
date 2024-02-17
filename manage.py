@@ -1,44 +1,39 @@
-# manage.py
-
-
 import os
 import unittest
 import coverage
 
-from flask_script import Manager
-from . import app, db, models
+from flask.cli import FlaskGroup
 
 COV = coverage.coverage(
     branch=True,
-    include='project/*',
+    include='app/*',
     omit=[
-        'project/tests/*',
-        'project/server/config.py',
-        'project/server/*/__init__.py'
+        'app/tests/*',
+        'config.py',
+        'app/*/__init__.py'
     ]
 )
 COV.start()
 
-
-manager = Manager(app)
+cli = FlaskGroup(True)
 
 # migrations
 
 
-@manager.command
+@cli.command("test")
 def test():
     """Runs the unit tests without test coverage."""
-    tests = unittest.TestLoader().discover('project/tests', pattern='test*.py')
+    tests = unittest.TestLoader().discover('app/tests', pattern='test*.py')
     result = unittest.TextTestRunner(verbosity=2).run(tests)
     if result.wasSuccessful():
         return 0
     return 1
 
 
-@manager.command
+@cli.command("cov")
 def cov():
     """Runs the unit tests with coverage."""
-    tests = unittest.TestLoader().discover('project/tests')
+    tests = unittest.TestLoader().discover('app/tests')
     result = unittest.TextTestRunner(verbosity=2).run(tests)
     if result.wasSuccessful():
         COV.stop()
@@ -46,13 +41,12 @@ def cov():
         print('Coverage Summary:')
         COV.report()
         basedir = os.path.abspath(os.path.dirname(__file__))
-        covdir = os.path.join(basedir, 'tmp/coverage')
-        COV.html_report(directory=covdir)
-        print('HTML version: file://%s/index.html' % covdir)
+        coverage_dir = os.path.join(basedir, 'tmp/coverage')
+        COV.html_report(directory=coverage_dir)
+        print('HTML version: file://%s/index.html' % coverage_dir)
         COV.erase()
         return 0
     return 1
 
-
 if __name__ == '__main__':
-    manager.run()
+    cli()
