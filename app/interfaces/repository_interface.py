@@ -7,11 +7,15 @@ class RepositoryInterface(ABC):
         raise NotImplementedError
 
     @abstractmethod
-    def get_by_id(self, id: int):
+    def get_by_id(self, id: int | str):
         raise NotImplementedError
 
     @abstractmethod
     def get_by_name(self, name: str):
+        raise NotImplementedError
+
+    @abstractmethod
+    def get_by_order(self, order: int):
         raise NotImplementedError
 
     @abstractmethod
@@ -23,5 +27,5 @@ class RepositoryInterface(ABC):
         raise NotImplementedError
 
     @abstractmethod
-    def delete(self, id: int):
+    def delete(self, id: int | str):
         raise NotImplementedError

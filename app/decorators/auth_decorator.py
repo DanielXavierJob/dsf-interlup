@@ -17,7 +17,7 @@ def token_required(f):
 
         if not token:
             return {
-                "message": "Authentication Token is missing!",
+                "message": "Invalid or missing Authentication token!",
             }, 401
 
         try:
@@ -25,11 +25,11 @@ def token_required(f):
             current_user = user_repository.get_by_id(data['id'])
             if current_user is None:
                 return {
-                    "message": "Invalid Authentication token!",
+                    "message": "Invalid or missing Authentication token!",
                 }, 401
         except Exception as e:
             print(e)
-            return {'message': 'Something went wrong'}, 500
+            return {"message": "Invalid or missing Authentication token!"}, 401
 
         return f(current_user=current_user, *args, **kwargs)
 

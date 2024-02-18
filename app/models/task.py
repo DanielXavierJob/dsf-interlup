@@ -1,12 +1,16 @@
+from sqlalchemy import Column, Integer, String, ForeignKey
+
 from app import db
 
 
 class Task(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(128), nullable=False)
-    description = db.Column(db.Text)
-    completed = db.Column(db.Boolean, default=False)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    __tablename__ = "task"
+    id = Column(Integer, primary_key=True)
+    title = Column(String(128), nullable=False)
+    description = Column(String)
+    order = Column(Integer)
+    category_id = Column(String, ForeignKey("task_category.id"))
+    user_id = Column(Integer, ForeignKey("user.id"))
 
     def to_dict(self):
         return {field.name: getattr(self, field.name) for field in self.__table__.c}
