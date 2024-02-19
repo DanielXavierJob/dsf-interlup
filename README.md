@@ -2,6 +2,8 @@
 
 Welcome to the dsf-interlup-api repository! This repository contains the source code for the DSF Interlup API project.
 
+See the README in **Portuguese** in [Readme pt-BR](https://github.com/DanielXavierJob/dsf-interlup-api/blob/master/docs/pt-BR.md)
+
 ## Description
 
 DSF Interlup API is a RESTful API built using Flask, designed to provide backend functionality for managing tasks and task categories. It includes features for user authentication, task creation, updating, deletion, and more.
