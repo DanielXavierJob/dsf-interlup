@@ -73,7 +73,7 @@ To run this project with Docker, follow these steps:
    - Define the required environment variables in the `.env` file. Example:
      ```
      SECRET_KEY=your_secret_key
-     DATABASE_URL=postgresql://postgres:1234@your_ip:5432/postgres
+     DATABASE_URL=postgresql://postgres:root@your_ip:5432/postgres
      DEBUG=True
      ```
 
