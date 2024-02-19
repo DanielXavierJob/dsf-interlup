@@ -71,7 +71,7 @@ Para executar este projeto no Docker, siga estas etapas:
    - Defina as variáveis de ambiente necessárias no arquivo `.env`. Exemplo:
      ```
      SECRET_KEY=sua_chave_secreta
-     DATABASE_URL=postgresql://postgres:1234@your_ip:5432/postgres
+     DATABASE_URL=postgresql://postgres:root@your_ip:5432/postgres
      DEBUG=True
      ```
 

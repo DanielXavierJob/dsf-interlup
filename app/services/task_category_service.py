@@ -36,7 +36,8 @@ class TaskCategoryService:
 
         Note:
         - This class assumes the existence of a User instance for operations that require a current user.
-        - The 'move_element_and_update_order' function is utilized within the 'update' method for reordering task categories.
+        - The 'move_element_and_update_order' function is utilized within the 'update' method for reordering task
+          categories.
     """
     def __init__(self):
         self.task_category_repository = TaskCategoryRepository()
