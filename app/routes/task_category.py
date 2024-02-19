@@ -46,6 +46,73 @@ TaskCategoryRegisterModel = api.model("TaskCategoryRegisterModel",
 
 @api.route("")
 class TasksCategory(Resource):
+    """
+        Endpoint: /tasks-category
+
+        Description:
+        Handles operations related to task categories.
+
+        Method: get(self, current_user)
+
+        Description:
+        Handles HTTP GET requests to retrieve all task categories related to the current user. Returns appropriate
+        responses based on the query parameters.
+
+        Parameters:
+        - current_user: User object representing the current authenticated user.
+
+        Responses:
+        - 200: All tasks categories related to this user.
+          Body: List[TaskCategoryModel]
+        - 401: Invalid or missing Authentication token.
+          Body: BaseResponseModel
+
+        Security:
+        Requires a Bearer Authentication token.
+
+        Authorization:
+        Requires a valid access token obtained through authentication.
+
+        Request Parameters:
+        - exclude_tasks (string, optional): If set to "true", tasks within the categories will be excluded from the
+          result.
+
+        Method: post(self, current_user)
+
+        Description:
+        Handles HTTP POST requests to create a new task category. Returns appropriate responses based on the creation
+        outcome.
+
+        Parameters:
+        - current_user: User object representing the current authenticated user.
+
+        Request Body:
+        Expects a JSON object with the following properties:
+        - title (string): Title of the task category.
+        - order (integer): Order of the task category.
+
+        Responses:
+        - 200: Task Category has been successfully created.
+          Body: TaskCategoryModel
+        - 401: Invalid or missing Authentication token.
+          Body: BaseResponseModel
+
+        Security:
+        Requires a Bearer Authentication token.
+
+        Validation:
+        The request body is validated using the RegisterNewTaskCategoryModel schema.
+
+        Authorization:
+        Requires a valid access token obtained through authentication.
+
+        Returns:
+        A JSON object containing the following keys:
+        - message (string): Confirmation message.
+        - result (object): Details of the created task category.
+          - exclude_tasks (boolean, optional): If the exclude_tasks query parameter is set to "true",
+          tasks within the category will be excluded from the result.
+    """
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.parser = reqparse.RequestParser()
@@ -56,6 +123,29 @@ class TasksCategory(Resource):
     @api.doc(security="Bearer Auth")
     @token_required
     def get(self, current_user):
+        """
+            Handles HTTP GET requests to retrieve all task categories related to the current user.
+            Returns appropriate responses based on the query parameters.
+
+            Parameters:
+            - current_user: User object representing the current authenticated user.
+
+            Responses:
+            - 200: All tasks categories related to this user.
+              Body: List[TaskCategoryModel]
+            - 401: Invalid or missing Authentication token.
+              Body: BaseResponseModel
+
+            Security:
+            Requires a Bearer Authentication token.
+
+            Authorization:
+            Requires a valid access token obtained through authentication.
+
+            Returns:
+            A JSON object containing a message indicating the success of the search operation,
+            along with the list of task categories.
+        """
         args = self.parser.parse_args()
         exclude_tasks = True if args["exclude_tasks"] == "true" else False
         tasks_categories = task_category_service.get_all(exclude_tasks, current_user)
@@ -71,6 +161,40 @@ class TasksCategory(Resource):
     @validate(body=RegisterNewTaskCategoryModel)
     @token_required
     def post(self, current_user):
+        """
+            Handles HTTP POST requests to create a new task category.
+            Returns appropriate responses based on the creation outcome.
+
+            Parameters:
+            - current_user: User object representing the current authenticated user.
+
+            Request Body:
+            Expects a JSON object with the following properties:
+            - title (string): Title of the task category.
+            - order (integer): Order of the task category.
+
+            Responses:
+            - 200: Task Category has been successfully created.
+              Body: TaskCategoryModel
+            - 401: Invalid or missing Authentication token.
+              Body: BaseResponseModel
+
+            Security:
+            Requires a Bearer Authentication token.
+
+            Validation:
+            The request body is validated using the RegisterNewTaskCategoryModel schema.
+
+            Authorization:
+            Requires a valid access token obtained through authentication.
+
+            Returns:
+            A JSON object containing the following keys:
+            - message (string): Confirmation message.
+            - result (object): Details of the created task category.
+              - exclude_tasks (boolean, optional): If the exclude_tasks query parameter is set to "true",
+              tasks within the category will be excluded from the result.
+        """
         title = request.body_params.title
         order = request.body_params.order
         task_category = task_category_service.create(title, order, current_user)
@@ -90,6 +214,99 @@ TaskCategoryUpdateModel = api.model("TaskCategoryUpdateModel",
 
 @api.route("/<string:id>")
 class TaskCategory(Resource):
+    """
+        Endpoint: /tasks-category/<string:id>
+
+        Description:
+        Handles operations related to individual task categories identified by their IDs.
+
+        Method: get(self, id, current_user)
+
+        Description:
+        Handles HTTP GET requests to retrieve a specific task category by its ID.
+        Returns appropriate responses based on the query parameters.
+
+        Parameters:
+        - id (string): The ID of the task category to retrieve.
+        - current_user: User object representing the current authenticated user.
+
+        Responses:
+        - 200: Task Category found.
+          Body: TaskCategoryModel
+        - 401: Invalid or missing Authentication token.
+          Body: BaseResponseModel
+        - 404: Task Category not found or you don't have permission to view it.
+          Body: BaseResponseModel
+
+        Security:
+        Requires a Bearer Authentication token.
+
+        Authorization:
+        Requires a valid access token obtained through authentication.
+
+        Request Parameters:
+        - exclude_tasks (boolean, optional): If set to true, tasks within the category will be excluded from the result.
+
+        Method: put(self, id, current_user)
+
+        Description:
+        Handles HTTP PUT requests to update a specific task category by its ID.
+        Returns appropriate responses based on the update outcome.
+
+        Parameters:
+        - id (string): The ID of the task category to update.
+        - current_user: User object representing the current authenticated user.
+
+        Request Body:
+        Expects a JSON object with the following properties:
+        - title (string): Title of the task category.
+        - order (integer): Order of the task category.
+
+        Responses:
+        - 200: Task Category has been updated.
+          Body: TaskCategoryModel
+        - 401: Invalid or missing Authentication token.
+          Body: BaseResponseModel
+        - 404: Task Category not found or you don't have permission to update it.
+          Body: BaseResponseModel
+
+        Security:
+        Requires a Bearer Authentication token.
+
+        Validation:
+        The request body is validated using the UpdateTaskCategoryModel schema.
+
+        Authorization:
+        Requires a valid access token obtained through authentication.
+
+        Returns:
+        A JSON object containing a message indicating the success of the update operation,
+        along with the updated task category details.
+
+        Method: delete(self, id, current_user)
+
+        Description:
+        Handles HTTP DELETE requests to delete a specific task category by its ID.
+        Returns appropriate responses based on the deletion outcome.
+
+        Parameters:
+        - id (string): The ID of the task category to delete.
+        - current_user: User object representing the current authenticated user.
+
+        Responses:
+        - 200: Task Category has been deleted.
+          Body: BaseResponseModel
+        - 401: Invalid or missing Authentication token.
+          Body: BaseResponseModel
+        - 404: Task Category not found or you don't have permission to delete it.
+          Body: BaseResponseModel
+
+        Security:
+        Requires a Bearer Authentication token.
+
+        Authorization:
+        Requires a valid access token obtained through authentication.
+    """
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.parser = reqparse.RequestParser()
@@ -101,6 +318,32 @@ class TaskCategory(Resource):
     @api.doc(security="Bearer Auth")
     @token_required
     def get(self, id, current_user):
+        """
+            Handles HTTP GET requests to retrieve a specific task category by its ID.
+            Returns appropriate responses based on the query parameters.
+
+            Parameters:
+            - id (string): The ID of the task category to retrieve.
+            - current_user: User object representing the current authenticated user.
+
+            Responses:
+            - 200: Task Category found.
+              Body: TaskCategoryModel
+            - 401: Invalid or missing Authentication token.
+              Body: BaseResponseModel
+            - 404: Task Category not found or you don't have permission to view it.
+              Body: BaseResponseModel
+
+            Security:
+            Requires a Bearer Authentication token.
+
+            Authorization:
+            Requires a valid access token obtained through authentication.
+
+            Request Parameters:
+            - exclude_tasks (boolean, optional): If set to true, tasks within the category will be excluded from the
+              result.
+        """
         args = self.parser.parse_args()
         exclude_tasks = True if args["exclude_tasks"] == "true" else False
         task_category = task_category_service.get_by_id(id, exclude_tasks, current_user)
@@ -118,6 +361,40 @@ class TaskCategory(Resource):
     @validate(body=UpdateTaskCategoryModel)
     @token_required
     def put(self, id, current_user):
+        """
+            Handles HTTP PUT requests to update a specific task category by its ID.
+            Returns appropriate responses based on the update outcome.
+
+            Parameters:
+            - id (string): The ID of the task category to update.
+            - current_user: User object representing the current authenticated user.
+
+            Request Body:
+            Expects a JSON object with the following properties:
+            - title (string): Title of the task category.
+            - order (integer): Order of the task category.
+
+            Responses:
+            - 200: Task Category has been updated.
+              Body: TaskCategoryModel
+            - 401: Invalid or missing Authentication token.
+              Body: BaseResponseModel
+            - 404: Task Category not found or you don't have permission to view it.
+              Body: BaseResponseModel
+
+            Security:
+            Requires a Bearer Authentication token.
+
+            Validation:
+            The request body is validated using the UpdateTaskCategoryModel schema.
+
+            Authorization:
+            Requires a valid access token obtained through authentication.
+
+            Returns:
+            A JSON object containing a message indicating the success of the update operation,
+            along with the updated task category details.
+        """
         title = request.body_params.title
         order = request.body_params.order
         task_category = task_category_service.update(id, title, order, current_user)
@@ -133,6 +410,28 @@ class TaskCategory(Resource):
     @api.doc(security="Bearer Auth")
     @token_required
     def delete(self, id, current_user):
+        """
+            Handles HTTP DELETE requests to delete a specific task category by its ID.
+            Returns appropriate responses based on the deletion outcome.
+
+            Parameters:
+            - id (string): The ID of the task category to delete.
+            - current_user: User object representing the current authenticated user.
+
+            Responses:
+            - 200: Task Category has been deleted.
+              Body: BaseResponseModel
+            - 401: Invalid or missing Authentication token.
+              Body: BaseResponseModel
+            - 404: Task Category not found or you don't have permission to delete it.
+              Body: BaseResponseModel
+
+            Security:
+            Requires a Bearer Authentication token.
+
+            Authorization:
+            Requires a valid access token obtained through authentication.
+        """
         success = task_category_service.delete(id, current_user)
         if success:
             return {"message": "Task Category has been deleted"}, 200

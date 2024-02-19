@@ -7,6 +7,16 @@ from app.repositories.user_repository import UserRepository
 
 
 def token_required(f):
+    """
+        Decorator function to enforce authentication via JWT token.
+
+        Parameters:
+        - f: The function to decorate.
+
+        Returns:
+        The decorated function.
+    """
+
     @wraps(f)
     def decorator(*args, **kwargs):
         user_repository = UserRepository()

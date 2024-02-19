@@ -12,6 +12,18 @@ CORS(app)
 
 
 def create_app():
+    """
+        Function: create_app
+
+        Description:
+        This function serves as a factory for creating instances of the Flask application for the
+        Todo-List API. It configures the application with the provided configuration object, initializes the database,
+        synchronizes the blueprints of various routes, sets up Swagger documentation, creates all necessary database
+        tables within the application context, and finally returns the configured Flask application instance.
+
+        Returns:
+        Flask: The configured Flask application instance.
+    """
     app.config.from_object(Config)
     db.init_app(app)
 

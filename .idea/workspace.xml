@@ -5,38 +5,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="592d06ad-b59f-4573-b2e6-d68e3fc8f562" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/blueprints.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/dtos/task_category_dto.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/models/task_category.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/repositories/task_category_repository.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/routes/task_category.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/services/task_category_service.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/swagger.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/utils/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/utils/reordener.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/dbb.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/blueprints.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/blueprints.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/decorators/auth_decorator.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/decorators/auth_decorator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/dtos/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/dtos/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/dtos/auth_dto.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/dtos/auth_dto.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/dtos/task_category_dto.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/dtos/task_category_dto.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/dtos/task_dto.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/dtos/task_dto.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/interfaces/repository_interface.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/interfaces/repository_interface.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/models/task.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/task.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/task_category.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/task_category.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/user.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/user.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/repositories/task_category_repository.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/repositories/task_category_repository.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/repositories/task_repository.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/repositories/task_repository.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/repositories/user_repository.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/repositories/user_repository.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/routes/auth.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/routes/auth.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/routes/task.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/routes/task.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/services/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/services/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/routes/task_category.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/routes/task_category.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/services/auth_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/services/auth_service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/services/task_category_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/services/task_category_service.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/services/task_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/services/task_service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/swagger.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/swagger.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/utils/reordener.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/utils/reordener.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dbb.db" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/wsgi.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,29 +69,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Flask server.Flask (app.py).executor&quot;: &quot;Run&quot;,
-    &quot;Flask server.Flask (main.py).executor&quot;: &quot;Run&quot;,
-    &quot;Flask server.Flask (run.py).executor&quot;: &quot;Run&quot;,
-    &quot;Flask server.dsf-interlup.executor&quot;: &quot;Run&quot;,
-    &quot;Python.auth.executor&quot;: &quot;Run&quot;,
-    &quot;Python.test.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/daniel/PycharmProjects/dsf-interlup/app/services&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Flask server.Flask (app.py).executor": "Run",
+    "Flask server.Flask (main.py).executor": "Run",
+    "Flask server.Flask (run.py).executor": "Run",
+    "Flask server.dsf-interlup.executor": "Run",
+    "Python.auth.executor": "Run",
+    "Python.test.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Users/daniel/Documents/dsf-interlup/dsf-interlup-api",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="QodanaReportsService">
     <option name="descriptions">
       <ReportDescription localRun="true" path="C:\Users\daniel\AppData\Local\Temp\qodana_output\qodana.sarif.json" reportGuid="85159d2a-88ee-4a3e-a7c2-cb33a26e78e9" reportId="dsf-interlup/qodana/2024-02-18" />
@@ -116,7 +107,7 @@
       <recent name="C:\Users\daniel\PycharmProjects\dsf-interlup\app" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Flask server.dsf-interlup">
     <configuration name="Flask (wsgi.py)" type="Python.FlaskServer" temporary="true" nameIsGenerated="true">
       <module name="dsf-interlup" />
       <option name="target" value="$PROJECT_DIR$/wsgi.py" />
@@ -189,6 +180,7 @@
       <workItem from="1708076402941" duration="49371000" />
       <workItem from="1708273757811" duration="5549000" />
       <workItem from="1708282576886" duration="2205000" />
+      <workItem from="1708298643914" duration="2390000" />
     </task>
     <servers />
   </component>
