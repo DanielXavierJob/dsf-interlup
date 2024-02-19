@@ -31,7 +31,7 @@ TaskModel = api.model("TaskModel",
                           "title": fields.String,
                           "order": fields.Integer,
                           "description": fields.String(required=False),
-                          "category_id": fields.Integer,
+                          "category_id": fields.String,
                           "user_id": fields.Integer
                       })
 
@@ -42,7 +42,7 @@ RegisterModel = api.model("TaskRegisterModel",
                               "title": fields.String,
                               "description": fields.String,
                               "order": fields.Integer,
-                              "category_id": fields.Integer,
+                              "category_id": fields.String,
                           })
 
 
